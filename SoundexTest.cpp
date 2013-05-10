@@ -1,5 +1,3 @@
-#include "gmock/gmock.h"
-
 #include <string>
 
 class Soundex
@@ -15,6 +13,8 @@ public:
 };
 
 // START:test
+#include "gmock/gmock.h"
+
 // START_HIGHLIGHT
 using ::testing::Eq;
 // END_HIGHLIGHT
