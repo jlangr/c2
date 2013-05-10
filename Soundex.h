@@ -8,9 +8,16 @@
 class Soundex
 {
 public:
+// START:encode
    std::string encode(const std::string& word) const {
-      return zeroPad(word);
+// START_HIGHLIGHT
+      auto encoded = word.substr(0, 1);
+      if (word.length() > 1)
+         encoded += "1";
+      return zeroPad(encoded);      
+// END_HIGHLIGHT
    }
+// END:encode
 
 private:
    std::string zeroPad(const std::string& word) const {
