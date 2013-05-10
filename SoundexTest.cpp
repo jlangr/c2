@@ -1,5 +1,3 @@
-#include "gmock/gmock.h"
-
 // START_HIGHLIGHT
 #include <string>
 // END_HIGHLIGHT
@@ -13,6 +11,8 @@ public:
    }
 // END_HIGHLIGHT
 };
+
+#include "gmock/gmock.h"
 
 // START:test
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
