@@ -1,8 +1,9 @@
 #include "gmock/gmock.h"
 
+// START_HIGHLIGHT
 #include <string>
+// END_HIGHLIGHT
 
-// START:encode
 class Soundex
 {
 // START_HIGHLIGHT
@@ -12,13 +13,16 @@ public:
    }
 // END_HIGHLIGHT
 };
-// END:encode
 
+// START:test
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
    Soundex soundex;
    
-// START_HIGHLIGHT
    auto encoded = soundex.encode("A");
+
+// START_HIGHLIGHT
+   ASSERT_THAT(encoded, testing::Eq("A")); 
 // END_HIGHLIGHT
 }
+// END:test
 
