@@ -1,5 +1,3 @@
-#include "gmock/gmock.h"
-
 #include <string>
 
 class Soundex
@@ -13,6 +11,9 @@ public:
    }
 // END:encode
 };
+
+
+#include "gmock/gmock.h"
 
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
    Soundex soundex;
