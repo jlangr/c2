@@ -25,19 +25,14 @@ private:
 
 using ::testing::Eq;
 
-// START:RetainsSoleLetter
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
    Soundex soundex;
    
    auto encoded = soundex.encode("A");
 
-// START_HIGHLIGHT
    ASSERT_THAT(encoded, Eq("A000")); 
-// END_HIGHLIGHT
 }
-// END:RetainsSoleLetter
 
-// START:PadsWithZeros
 TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
    Soundex soundex;
 
@@ -45,4 +40,4 @@ TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 
    ASSERT_THAT(encoded, Eq("I000"));
 }
-// END:PadsWithZeros
+
