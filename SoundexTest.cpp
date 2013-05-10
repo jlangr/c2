@@ -1,5 +1,3 @@
-#include "gmock/gmock.h" 
-
 #include <string>
 
 // START:Soundex
@@ -15,6 +13,9 @@ public:
 // END:encode
 };
 // END:Soundex
+
+
+#include "gmock/gmock.h" 
 
 using ::testing::Eq;
 
