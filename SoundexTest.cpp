@@ -23,21 +23,32 @@ private:
 };
 // END:Soundex
 
+// START:test
 using ::testing::Eq;
+// START_HIGHLIGHT
+using ::testing::Test;
+// END_HIGHLIGHT
 
-TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
+// START_HIGHLIGHT
+class SoundexEncoding: public Test {
+public:
    Soundex soundex;
-   
+};
+// END_HIGHLIGHT
+
+// START_HIGHLIGHT
+TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
+// END_HIGHLIGHT
    auto encoded = soundex.encode("A");
 
    ASSERT_THAT(encoded, Eq("A000")); 
 }
 
-TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
-   Soundex soundex;
-
+// START_HIGHLIGHT
+TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
+// END_HIGHLIGHT
    auto encoded = soundex.encode("I");
 
    ASSERT_THAT(encoded, Eq("I000"));
 }
-
+// END:test
