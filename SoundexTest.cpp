@@ -1,6 +1,11 @@
-#include "gmock/gmock.h"    //<label id="code.include"/>
+#include "gmock/gmock.h"
 
-TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) { //<label id="code.test"/>
-   Soundex soundex;   //<label id="code.construct"/>
+// START_HIGHLIGHT
+class Soundex {
+};
+// END_HIGHLIGHT
+
+TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
+   Soundex soundex;
 }
 
