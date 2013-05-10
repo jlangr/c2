@@ -14,11 +14,19 @@ public:
 // END:encode
 };
 
+// START:test
+// START_HIGHLIGHT
+using ::testing::Eq;
+// END_HIGHLIGHT
+
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
    Soundex soundex;
    
    auto encoded = soundex.encode("A");
 
-   ASSERT_THAT(encoded, testing::Eq("A")); 
+// START_HIGHLIGHT
+   ASSERT_THAT(encoded, Eq("A")); 
+// END_HIGHLIGHT
 }
+// END:test
 
