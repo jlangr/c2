@@ -27,3 +27,11 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 // END_HIGHLIGHT
 }
 
+// START:ReplacesConsonants
+TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
+// START_HIGHLIGHT
+   ASSERT_THAT(soundex.encode("Ab"), Eq("A100"));
+// END_HIGHLIGHT
+}
+// END:ReplacesConsonants
+
