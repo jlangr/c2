@@ -5,13 +5,20 @@
 // START:Soundex
 class Soundex
 {
-public:
 // START:encode
+public:
    std::string encode(const std::string& word) const {
 // START_HIGHLIGHT
-      return word + "000";
+      return zeroPad(word);
 // END_HIGHLIGHT
    }
+
+private:
+// START_HIGHLIGHT
+   std::string zeroPad(const std::string& word) const {
+      return word + "000";
+   }
+// END_HIGHLIGHT
 // END:encode
 };
 // END:Soundex
