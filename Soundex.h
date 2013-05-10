@@ -1,31 +1,40 @@
-// START_HIGHLIGHT
 #ifndef Soundex_h
 #define Soundex_h
-// END_HIGHLIGHT
 
 #include <string>
 
+// START:Soundex
 class Soundex
 {
 public:
    std::string encode(const std::string& word) const {
-      auto encoded = word.substr(0, 1);
-      if (word.length() > 1)
-         encoded += "1";
-      return zeroPad(encoded);      
+// START_HIGHLIGHT
+      return zeroPad(head(word) + encodedDigits(word));
+// END_HIGHLIGHT
    }
 
 private:
-// START:zeroPad
-   std::string zeroPad(const std::string& word) const {
 // START_HIGHLIGHT
+   std::string head(const std::string& word) const {
+      return word.substr(0, 1);
+   }
+// END_HIGHLIGHT
+//
+// START_HIGHLIGHT
+   std::string encodedDigits(const std::string& word) const {
+      if (word.length() > 1) return "1";
+      return "";
+   }
+// END_HIGHLIGHT
+
+   std::string zeroPad(const std::string& word) const {
+   // ...
+// END:Soundex
       auto zerosNeeded = 4 - word.length();
       return word + std::string(zerosNeeded, '0');
-// END_HIGHLIGHT
+// START:Soundex
    }
-// END:zeroPad
 };
+// END:Soundex
 
-// START_HIGHLIGHT
 #endif
-// END_HIGHLIGHT
