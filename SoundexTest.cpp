@@ -1,5 +1,3 @@
-#include "gmock/gmock.h"    
-
 #include <string>
 
 // START:Soundex
@@ -15,6 +13,8 @@ public:
 // END:Soundex
 
 // START:test
+#include "gmock/gmock.h"    
+
 using ::testing::Eq;
 
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
