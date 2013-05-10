@@ -21,10 +21,20 @@ private:
       return word.substr(0, 1);
    }
 
+// START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
-      if (word.length() > 1) return "1";
+// START_HIGHLIGHT
+      if (word.length() > 1) return encodedDigit();
+// END_HIGHLIGHT
       return "";
    }
+
+// START_HIGHLIGHT
+   std::string encodedDigit() const {
+      return "1";
+   }
+// END_HIGHLIGHT
+// END:encodedDigits
 
 // START:MaxCodeLength
    std::string zeroPad(const std::string& word) const {
