@@ -7,32 +7,32 @@
 class Soundex
 {
 public:
+// START:MaxCodeLength
+   static const size_t MaxCodeLength{4};
+   // ...
+// END:MaxCodeLength
+
    std::string encode(const std::string& word) const {
-// START_HIGHLIGHT
       return zeroPad(head(word) + encodedDigits(word));
-// END_HIGHLIGHT
    }
 
 private:
-// START_HIGHLIGHT
    std::string head(const std::string& word) const {
       return word.substr(0, 1);
    }
-// END_HIGHLIGHT
 
-// START_HIGHLIGHT
    std::string encodedDigits(const std::string& word) const {
       if (word.length() > 1) return "1";
       return "";
    }
-// END_HIGHLIGHT
 
+// START:MaxCodeLength
    std::string zeroPad(const std::string& word) const {
-   // ...
-// END:Soundex
-      auto zerosNeeded = 4 - word.length();
+// START_HIGHLIGHT
+      auto zerosNeeded = MaxCodeLength - word.length();
+// END_HIGHLIGHT
       return word + std::string(zerosNeeded, '0');
-// START:Soundex
+// END:MaxCodeLength
    }
 };
 // END:Soundex
