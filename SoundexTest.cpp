@@ -1,28 +1,24 @@
 #include "gmock/gmock.h"
 
-// START_HIGHLIGHT
 #include <string>
-// END_HIGHLIGHT
 
 class Soundex
 {
-// START_HIGHLIGHT
 public:
+// START:encode
    std::string encode(const std::string& word) const {
-      return "";
-   }
+// START_HIGHLIGHT
+      return "A";
 // END_HIGHLIGHT
+   }
+// END:encode
 };
 
-// START:test
 TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
    Soundex soundex;
    
    auto encoded = soundex.encode("A");
 
-// START_HIGHLIGHT
    ASSERT_THAT(encoded, testing::Eq("A")); 
-// END_HIGHLIGHT
 }
-// END:test
 
