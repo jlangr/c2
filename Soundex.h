@@ -19,7 +19,7 @@ private:
       return word.substr(0, 1);
    }
 // END_HIGHLIGHT
-//
+
 // START_HIGHLIGHT
    std::string encodedDigits(const std::string& word) const {
       if (word.length() > 1) return "1";
