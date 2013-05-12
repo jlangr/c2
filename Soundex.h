@@ -39,7 +39,8 @@ private:
          {'m', "5"}, {'n', "5"},
          {'r', "6"}
       };
-      return encodings.find(letter)->second;
+      auto it = encodings.find(letter);
+      return it == encodings.end() ? "" : it->second;
 // END_HIGHLIGHT
    }
 // END:encodedDigits
