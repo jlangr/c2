@@ -19,10 +19,8 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 
 // START:ReplacesConsonants
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
-   EXPECT_THAT(soundex.encode("Ab"), Eq("A100"));
-   EXPECT_THAT(soundex.encode("Ac"), Eq("A200"));
 // START_HIGHLIGHT
-   EXPECT_THAT(soundex.encode("Ad"), Eq("A300"));
+   ASSERT_THAT(soundex.encode("Ax"), Eq("A200"));
 // END_HIGHLIGHT
 }
 // END:ReplacesConsonants
