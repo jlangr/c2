@@ -7,10 +7,7 @@
 class Soundex
 {
 public:
-// START:MaxCodeLength
    static const size_t MaxCodeLength{4};
-   // ...
-// END:MaxCodeLength
 
    std::string encode(const std::string& word) const {
       return zeroPad(head(word) + encodedDigits(word));
@@ -24,25 +21,22 @@ private:
 // START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
 // START_HIGHLIGHT
-      if (word.length() > 1) return encodedDigit();
+      if (word.length() > 1) return encodedDigit(word[1]);
 // END_HIGHLIGHT
       return "";
    }
 
 // START_HIGHLIGHT
-   std::string encodedDigit() const {
+   std::string encodedDigit(char letter) const {
+      if (letter == 'c') return "2";
+// END_HIGHLIGHT
       return "1";
    }
-// END_HIGHLIGHT
 // END:encodedDigits
 
-// START:MaxCodeLength
    std::string zeroPad(const std::string& word) const {
-// START_HIGHLIGHT
       auto zerosNeeded = MaxCodeLength - word.length();
-// END_HIGHLIGHT
       return word + std::string(zerosNeeded, '0');
-// END:MaxCodeLength
    }
 };
 // END:Soundex

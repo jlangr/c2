@@ -17,7 +17,12 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
    ASSERT_THAT(soundex.encode("I"), Eq("I000"));
 }
 
+// START:ReplacesConsonants
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
-   ASSERT_THAT(soundex.encode("Ab"), Eq("A100"));
+// START_HIGHLIGHT
+   EXPECT_THAT(soundex.encode("Ab"), Eq("A100"));
+   EXPECT_THAT(soundex.encode("Ac"), Eq("A200"));
+// END_HIGHLIGHT
 }
+// END:ReplacesConsonants
 
