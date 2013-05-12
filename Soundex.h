@@ -2,6 +2,10 @@
 #define Soundex_h
 
 #include <string>
+// START_HIGHLIGHT
+#include <unordered_map>
+// ...
+// END_HIGHLIGHT
 
 // START:Soundex
 class Soundex
@@ -18,19 +22,21 @@ private:
       return word.substr(0, 1);
    }
 
-// START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
-// START_HIGHLIGHT
       if (word.length() > 1) return encodedDigit(word[1]);
-// END_HIGHLIGHT
       return "";
    }
 
-// START_HIGHLIGHT
+// START:encodedDigits
    std::string encodedDigit(char letter) const {
-      if (letter == 'c') return "2";
+// START_HIGHLIGHT
+      const std::unordered_map<char,std::string> encodings {
+         {'b', "1"},
+         {'c', "2"},
+         {'d', "3"}
+      };
+      return encodings.find(letter)->second;
 // END_HIGHLIGHT
-      return "1";
    }
 // END:encodedDigits
 
