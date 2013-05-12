@@ -21,8 +21,13 @@ TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
    ASSERT_THAT(soundex.encode("Ax"), Eq("A200"));
 }
 
-// START:IgnoresNonAlphabetics
 TEST_F(SoundexEncoding, IgnoresNonAlphabetics) {
    ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
 }
-// END:IgnoresNonAlphabetics
+
+// START:ReplacesMultipleConsonants
+TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
+   ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
+}
+// END:ReplacesMultipleConsonants
+
