@@ -13,19 +13,34 @@ class Soundex
 public:
    static const size_t MaxCodeLength{4};
 
+// START:prefactor
    std::string encode(const std::string& word) const {
-      return zeroPad(head(word) + encodedDigits(word));
+// START_HIGHLIGHT
+      return zeroPad(head(word) + encodedDigits(tail(word)));
+// END_HIGHLIGHT
    }
 
 private:
+   // ...
+// END:prefactor
    std::string head(const std::string& word) const {
       return word.substr(0, 1);
    }
+   
+// START:prefactor
+// START_HIGHLIGHT
+   std::string tail(const std::string& word) const {
+      return word.substr(1);
+   }
+// END_HIGHLIGHT
 
    std::string encodedDigits(const std::string& word) const {
-      if (word.length() > 1) return encodedDigit(word[1]);
-      return "";
+// START_HIGHLIGHT
+      if (word.empty()) return "";
+      return encodedDigit(word.front());
+// END_HIGHLIGHT
    }
+// END:prefactor
 
 // START:encodedDigits
    std::string encodedDigit(char letter) const {

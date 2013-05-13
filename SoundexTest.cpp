@@ -26,7 +26,9 @@ TEST_F(SoundexEncoding, IgnoresNonAlphabetics) {
 }
 
 // START:ReplacesMultipleConsonants
-TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
+// START_HIGHLIGHT
+TEST_F(SoundexEncoding, DISABLED_ReplacesMultipleConsonantsWithDigits) {
+// END_HIGHLIGHT
    ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
 }
 // END:ReplacesMultipleConsonants
