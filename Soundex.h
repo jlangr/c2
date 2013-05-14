@@ -9,13 +9,9 @@ class Soundex
 public:
    static const size_t MaxCodeLength{4};
 
-// START:encode
    std::string encode(const std::string& word) const {
-// START_HIGHLIGHT
-      return zeroPad(upperFront(head(word)) + encodedDigits(tail(word)));
-// END_HIGHLIGHT
+      return zeroPad(head(word) + encodedDigits(tail(word)));
    }
-// END:encode
 
 private:
    std::string head(const std::string& word) const {
@@ -31,17 +27,21 @@ private:
       std::string encoding;
       for (auto letter: word) {
          if (isComplete(encoding)) break;
+// START_HIGHLIGHT
          if (encodedDigit(letter) != lastDigit(encoding))
+// END_HIGHLIGHT
             encoding += encodedDigit(letter);
       }
       return encoding;
    }
 // END:encodedDigits
 
+// START:lastDigit
    std::string lastDigit(const std::string& encoding) const {
       if (encoding.empty()) return "";
       return std::string(1, encoding.back());
    }
+// END:lastDigit
 
    bool isComplete (const std::string& encoding) const {
       return encoding.length() == MaxCodeLength - 1; 
@@ -67,15 +67,6 @@ private:
       auto zerosNeeded = MaxCodeLength - word.length();
       return word + std::string(zerosNeeded, '0');
    }
-// START:encode
-
-// START_HIGHLIGHT
-   std::string upperFront(const std::string& string) const {
-      return std::string(1, 
-            std::toupper(static_cast<unsigned char>(string.front())));
-   }
-// END_HIGHLIGHT
-// END:encode
 };
 // END:Soundex
 
