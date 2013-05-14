@@ -37,14 +37,16 @@ TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
    ASSERT_THAT(soundex.encode("Caeiouhycdl"), Eq("C234"));
 }
 
-// START:CombinesDuplicateEncodings
 TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
-// START_HIGHLIGHT
    ASSERT_THAT(soundex.encodedDigit('b'), Eq(soundex.encodedDigit('f')));
    ASSERT_THAT(soundex.encodedDigit('c'), Eq(soundex.encodedDigit('g')));
    ASSERT_THAT(soundex.encodedDigit('d'), Eq(soundex.encodedDigit('t')));
-// END_HIGHLIGHT
 
    ASSERT_THAT(soundex.encode("Abfcgdt"), Eq("A123"));
 }
-// END:CombinesDuplicateEncodings
+
+// START:Uppercases
+TEST_F(SoundexEncoding, UppercasesFirstLetter) {
+   ASSERT_THAT(soundex.encode("abcd"), StartsWith("A"));
+}
+// END:Uppercases
