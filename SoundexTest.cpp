@@ -33,8 +33,12 @@ TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
    ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
 }
 
-// START:IgnoresVowelLike
 TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
    ASSERT_THAT(soundex.encode("Caeiouhycdl"), Eq("C234"));
 }
-// END:IgnoresVowelLike
+
+// START:CombinesDuplicateEncodings
+TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
+   ASSERT_THAT(soundex.encode("Abfcgdt"), Eq("A123"));
+}
+// END:CombinesDuplicateEncodings
