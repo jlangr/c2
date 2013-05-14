@@ -25,19 +25,18 @@ private:
 // START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
-      for (auto i = 0u; 
-           i < word.length() && 
+      for (auto letter: word) {
 // START_HIGHLIGHT
-               isIncomplete(encoding);
+         if (isComplete(encoding)) break;
 // END_HIGHLIGHT
-           i++) 
-         encoding += encodedDigit(word[i]);
+         encoding += encodedDigit(letter);
+      }
       return encoding;
    }
 
 // START_HIGHLIGHT
-   bool isIncomplete (const std::string& encoding) const {
-      return encoding.length() < MaxCodeLength - 1; 
+   bool isComplete (const std::string& encoding) const {
+      return encoding.length() == MaxCodeLength - 1; 
    }
 // END_HIGHLIGHT
 // END:encodedDigits
