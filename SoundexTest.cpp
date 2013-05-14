@@ -29,9 +29,12 @@ TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
    ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
 }
 
-// START:LimitsLength
 TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
    ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
 }
-// END:LimitsLength
 
+// START:IgnoresVowelLike
+TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
+   ASSERT_THAT(soundex.encode("Caeiouhycdl"), Eq("C234"));
+}
+// END:IgnoresVowelLike
