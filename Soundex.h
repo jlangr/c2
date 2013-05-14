@@ -34,14 +34,14 @@ private:
       }
       return encoding;
    }
+// END:encodedDigits
 
-// START_HIGHLIGHT
+// START:lastDigit
    std::string lastDigit(const std::string& encoding) const {
       if (encoding.empty()) return "";
       return std::string(1, encoding.back());
    }
-// END_HIGHLIGHT
-// END:encodedDigits
+// END:lastDigit
 
    bool isComplete (const std::string& encoding) const {
       return encoding.length() == MaxCodeLength - 1; 
