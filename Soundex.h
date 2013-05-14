@@ -25,7 +25,13 @@ private:
 // START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
-      for (auto letter: word) encoding += encodedDigit(letter);
+// START_HIGHLIGHT
+      for (auto i = 0u; 
+           i < word.length() && 
+              encoding.length() < MaxCodeLength - 1; 
+           i++) 
+         encoding += encodedDigit(word[i]);
+// END_HIGHLIGHT
       return encoding;
    }
 // END:encodedDigits

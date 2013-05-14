@@ -25,11 +25,13 @@ TEST_F(SoundexEncoding, IgnoresNonAlphabetics) {
    ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
 }
 
-// START:ReplacesMultipleConsonants
-// START_HIGHLIGHT
 TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
-// END_HIGHLIGHT
    ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
 }
-// END:ReplacesMultipleConsonants
+
+// START:LimitsLength
+TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
+   ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
+}
+// END:LimitsLength
 
