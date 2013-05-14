@@ -27,15 +27,24 @@ private:
    }
 
 // START:encodedDigits
+// START_HIGHLIGHT
+   const std::string NonEncodableCharacter{""};
+// END_HIGHLIGHT
+
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
       for (auto letter: word) {
          if (isComplete(encoding)) break;
-         if (encodedDigit(letter) != lastDigit(encoding))
-            encoding += encodedDigit(letter);
+
+// START_HIGHLIGHT
+         auto digit = encodedDigit(letter);
+         if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
+            encoding += digit;
+// END_HIGHLIGHT
       }
       return encoding;
    }
+   // ...
 // END:encodedDigits
 
    std::string lastDigit(const std::string& encoding) const {
@@ -48,8 +57,11 @@ private:
    }
 
 public:
+// START:encodedDigits
    std::string encodedDigit(char letter) const {
       const std::unordered_map<char, std::string> encodings {
+         // ...
+// END:encodedDigits
          {'b', "1"}, {'f', "1"}, {'p', "1"}, {'v', "1"},
          {'c', "2"}, {'g', "2"}, {'j', "2"}, {'k', "2"}, {'q', "2"},
                      {'s', "2"}, {'x', "2"}, {'z', "2"},
@@ -57,10 +69,14 @@ public:
          {'l', "4"},
          {'m', "5"}, {'n', "5"},
          {'r', "6"}
+// START:encodedDigits
       };
       auto it = encodings.find(letter);
-      return it == encodings.end() ? "" : it->second;
+// START_HIGHLIGHT
+      return it == encodings.end() ? NonEncodableCharacter : it->second;
+// END_HIGHLIGHT
    }
+// END:encodedDigits
 
 private:
    std::string zeroPad(const std::string& word) const {
