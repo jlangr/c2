@@ -24,13 +24,9 @@ private:
 
 // START:encodedDigits
    std::string encodedDigits(const std::string& word) const {
-      if (word.empty()) return "";
-
-// START_HIGHLIGHT
       std::string encoding;
       for (auto letter: word) encoding += encodedDigit(letter);
       return encoding;
-// END_HIGHLIGHT
    }
 // END:encodedDigits
 
