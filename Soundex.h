@@ -41,7 +41,13 @@ private:
 // END_HIGHLIGHT
 // END:encodedDigits
 
+// START:encodedDigit
+// START_HIGHLIGHT
+public:
+// END_HIGHLIGHT
    std::string encodedDigit(char letter) const {
+      // ...
+// END:encodedDigit
       const std::unordered_map<char, std::string> encodings {
          {'b', "1"}, {'f', "1"}, {'p', "1"}, {'v', "1"},
          {'c', "2"}, {'g', "2"}, {'j', "2"}, {'k', "2"}, {'q', "2"},
@@ -53,8 +59,14 @@ private:
       };
       auto it = encodings.find(letter);
       return it == encodings.end() ? "" : it->second;
+// START:encodedDigit
    }
 
+// START_HIGHLIGHT
+private:
+// END_HIGHLIGHT
+   // ...
+// END:encodedDigit
    std::string zeroPad(const std::string& word) const {
       auto zerosNeeded = MaxCodeLength - word.length();
       return word + std::string(zerosNeeded, '0');
