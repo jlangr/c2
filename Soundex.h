@@ -67,9 +67,11 @@ public:
    }
 
 private:
+// START_HIGHLIGHT
    char lower(char c) const {
       return std::tolower(static_cast<unsigned char>(c));
    }
+// END_HIGHLIGHT
 // END:encodedDigit
 
    std::string zeroPad(const std::string& word) const {
