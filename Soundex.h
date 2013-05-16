@@ -28,7 +28,6 @@ private:
 
    const std::string NonEncodableCharacter{"*"};
 
-// START:encodedDigitsRefactored
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
       encodeHead(encoding, word);
@@ -40,16 +39,20 @@ private:
       encoding += encodedDigit(word.front());
    }
 
+// START:encodeTail
    void encodeTail(std::string& encoding, const std::string& word) const {
-      for (auto letter: tail(word)) {
-         if (isComplete(encoding)) break;
-
-         auto digit = encodedDigit(letter);
-         if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
-            encoding += digit;
-      }
+      for (auto letter: tail(word)) 
+         encodeLetter(encoding, letter);
    }
-// END:encodedDigitsRefactored
+
+   void encodeLetter(std::string& encoding, char letter) const {
+      if (isComplete(encoding)) return;
+
+      auto digit = encodedDigit(letter);
+      if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
+         encoding += digit;
+   }
+// END:encodeTail
 
    std::string lastDigit(const std::string& encoding) const {
       if (encoding.empty()) return "";
