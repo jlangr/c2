@@ -41,17 +41,31 @@ private:
 
 // START:encodeTail
    void encodeTail(std::string& encoding, const std::string& word) const {
-      for (auto letter: tail(word)) 
-         encodeLetter(encoding, letter);
+// START_HIGHLIGHT
+      for (auto i = 1u; i < word.length(); i++)
+         encodeLetter(encoding, word[i], word[i - 1]);
+// END_HIGHLIGHT
    }
 
-   void encodeLetter(std::string& encoding, char letter) const {
+// START_HIGHLIGHT
+   void encodeLetter(std::string& encoding, char letter, char lastLetter) const {
+// END_HIGHLIGHT
       if (isComplete(encoding)) return;
 
       auto digit = encodedDigit(letter);
-      if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
+      if (digit != NonEncodableCharacter && 
+// START_HIGHLIGHT
+            (digit != lastDigit(encoding) || isVowel(lastLetter)))
+// END_HIGHLIGHT
          encoding += digit;
    }
+
+// START_HIGHLIGHT
+   bool isVowel(char letter) const {
+      return
+         std::string("aeiouy").find(lower(letter)) != std::string::npos;
+   }
+// END_HIGHLIGHT
 // END:encodeTail
 
    std::string lastDigit(const std::string& encoding) const {
