@@ -42,12 +42,11 @@ private:
 // START:encodeTail
    void encodeTail(std::string& encoding, const std::string& word) const {
       for (auto letter: tail(word)) 
-         encodeLetter(encoding, letter);
+         if (!isComplete(encoding))
+            encodeLetter(encoding, letter);
    }
 
    void encodeLetter(std::string& encoding, char letter) const {
-      if (isComplete(encoding)) return;
-
       auto digit = encodedDigit(letter);
       if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
          encoding += digit;
