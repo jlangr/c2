@@ -22,7 +22,7 @@ private:
       return word.substr(1);
    }
 
-   const std::string NonEncodableCharacter{""};
+   const std::string NonEncodableCharacter{"*"};
 
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
