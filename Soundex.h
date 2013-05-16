@@ -28,27 +28,28 @@ private:
 
    const std::string NonEncodableCharacter{"*"};
 
-// START:CombinesDupImpl
+// START:encodedDigitsRefactored
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
+      encodeHead(encoding, word);
+      encodeTail(encoding, word);
+      return encoding;
+   }
 
-// START_HIGHLIGHT
+   void encodeHead(std::string& encoding, const std::string& word) const {
       encoding += encodedDigit(word.front());
-// END_HIGHLIGHT
+   }
 
-// START_HIGHLIGHT
+   void encodeTail(std::string& encoding, const std::string& word) const {
       for (auto letter: tail(word)) {
-// END_HIGHLIGHT
          if (isComplete(encoding)) break;
 
          auto digit = encodedDigit(letter);
          if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
             encoding += digit;
       }
-      return encoding;
    }
-
-// END:CombinesDupImpl
+// END:encodedDigitsRefactored
 
    std::string lastDigit(const std::string& encoding) const {
       if (encoding.empty()) return "";
