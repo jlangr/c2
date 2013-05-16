@@ -43,15 +43,14 @@ private:
    void encodeTail(std::string& encoding, const std::string& word) const {
 // START_HIGHLIGHT
       for (auto i = 1u; i < word.length(); i++)
-         encodeLetter(encoding, word[i], word[i - 1]);
+         if (!isComplete(encoding)) 
+            encodeLetter(encoding, word[i], word[i - 1]);
 // END_HIGHLIGHT
    }
 
 // START_HIGHLIGHT
    void encodeLetter(std::string& encoding, char letter, char lastLetter) const {
 // END_HIGHLIGHT
-      if (isComplete(encoding)) return;
-
       auto digit = encodedDigit(letter);
       if (digit != NonEncodableCharacter && 
 // START_HIGHLIGHT
