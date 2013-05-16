@@ -28,7 +28,7 @@ private:
 
 // START:encodedDigits
 // START_HIGHLIGHT
-   const std::string NonEncodableCharacter{""};
+   const std::string NonEncodableCharacter{"*"};
 // END_HIGHLIGHT
 
    std::string encodedDigits(const std::string& word) const {
