@@ -35,6 +35,6 @@ TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
 
 // START:IgnoresVowelLike
 TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
-   ASSERT_THAT(soundex.encode("Caeiouhycdl"), Eq("C234"));
+   ASSERT_THAT(soundex.encode("Baeiouhycdl"), Eq("B234"));
 }
 // END:IgnoresVowelLike
