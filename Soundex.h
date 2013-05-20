@@ -12,6 +12,7 @@ class Soundex
 public:
    static const size_t MaxCodeLength{4};
 
+// START:impl
    std::string encode(const std::string& word) const {
       return stringutil::zeroPad(
          stringutil::upperFront(stringutil::head(word)) +
@@ -19,6 +20,7 @@ public:
          MaxCodeLength);
    }
 
+// END:impl
    std::string encodedDigit(char letter) const {
       const std::unordered_map<char, std::string> encodings {
          {'b', "1"}, {'f', "1"}, {'p', "1"}, {'v', "1"},
@@ -36,6 +38,7 @@ public:
 private:
    const std::string NonEncodableCharacter{"*"};
 
+// START:impl
    std::string encodedDigits(const std::string& word) const {
       std::string encoding;
       encodeHead(encoding, word);
@@ -59,6 +62,7 @@ private:
             (digit != lastDigit(encoding) || charutil::isVowel(lastLetter)))
          encoding += digit;
    }
+// END:impl
 
    std::string lastDigit(const std::string& encoding) const {
       if (encoding.empty()) return "";
