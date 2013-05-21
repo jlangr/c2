@@ -28,7 +28,7 @@ private:
 
 // START:encodedDigits
 // START_HIGHLIGHT
-   const std::string NonEncodableCharacter{"*"};
+   const std::string NotADigit{"*"};
 // END_HIGHLIGHT
 
    std::string encodedDigits(const std::string& word) const {
@@ -38,19 +38,21 @@ private:
 
 // START_HIGHLIGHT
          auto digit = encodedDigit(letter);
-         if (digit != NonEncodableCharacter && digit != lastDigit(encoding))
+         if (digit != NotADigit && digit != lastDigit(encoding))
             encoding += digit;
 // END_HIGHLIGHT
       }
       return encoding;
    }
-   // ...
-// END:encodedDigits
 
    std::string lastDigit(const std::string& encoding) const {
-      if (encoding.empty()) return "";
+// START_HIGHLIGHT
+      if (encoding.empty()) return NotADigit;
+// END_HIGHLIGHT
       return std::string(1, encoding.back());
    }
+   // ...
+// END:encodedDigits
 
    bool isComplete (const std::string& encoding) const {
       return encoding.length() == MaxCodeLength - 1; 
@@ -73,7 +75,7 @@ public:
       };
       auto it = encodings.find(letter);
 // START_HIGHLIGHT
-      return it == encodings.end() ? NonEncodableCharacter : it->second;
+      return it == encodings.end() ? NotADigit : it->second;
 // END_HIGHLIGHT
    }
 // END:encodedDigits
