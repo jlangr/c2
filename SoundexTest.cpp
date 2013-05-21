@@ -24,11 +24,11 @@ private:
 
 #include "gmock/gmock.h" 
 
-using ::testing::Eq;
+using testing::Eq;
 
 // START:test
 // START_HIGHLIGHT
-class SoundexEncoding: public ::testing::Test {
+class SoundexEncoding: public testing::Test {
 public:
    Soundex soundex;
 };
