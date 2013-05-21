@@ -32,11 +32,11 @@ public:
          {'r', "6"}
       };
       auto it = encodings.find(charutil::lower(letter));
-      return it == encodings.end() ? NonEncodableCharacter : it->second;
+      return it == encodings.end() ? NotADigit : it->second;
    }
 
 private:
-   const std::string NonEncodableCharacter{"*"};
+   const std::string NotADigit{"*"};
 
 // START:impl
    std::string encodedDigits(const std::string& word) const {
@@ -58,14 +58,14 @@ private:
 
    void encodeLetter(std::string& encoding, char letter, char lastLetter) const {
       auto digit = encodedDigit(letter);
-      if (digit != NonEncodableCharacter && 
+      if (digit != NotADigit && 
             (digit != lastDigit(encoding) || charutil::isVowel(lastLetter)))
          encoding += digit;
    }
 // END:impl
 
    std::string lastDigit(const std::string& encoding) const {
-      if (encoding.empty()) return "";
+      if (encoding.empty()) return NotADigit;
       return std::string(1, encoding.back());
    }
 
