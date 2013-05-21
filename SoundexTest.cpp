@@ -5,7 +5,7 @@
 // END_HIGHLIGHT
 
 // START_HIGHLIGHT
-using namespace ::testing;
+using namespace testing;
 // END_HIGHLIGHT
 
 // START_HIGHLIGHT
