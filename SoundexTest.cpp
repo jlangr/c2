@@ -2,7 +2,7 @@
 
 #include "Soundex.h"
 
-using namespace ::testing;
+using namespace testing;
 
 class SoundexEncoding: public Test {
 public:
